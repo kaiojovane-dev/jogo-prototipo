@@ -1,0 +1,14 @@
+{
+  "name": "Fim do Mapa",
+  "short_name": "Fim do Mapa",
+  "description": "RPG de aventura pirata — beta para testes.",
+  "start_url": "index.html",
+  "display": "fullscreen",
+  "orientation": "landscape",
+  "background_color": "#071327",
+  "theme_color": "#071327",
+  "icons": [
+    { "src": "TemplateData/icone-180.png", "sizes": "180x180", "type": "image/png" },
+    { "src": "TemplateData/icone-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" }
+  ]
+}
