@@ -14,7 +14,20 @@ atordoa na hora certa consegue interrompê-la.
   <img src="media/mapa.jpg" width="49%" alt="Mapa da Enseada do Farol">
 </p>
 
-## Baixar e instalar no celular
+## Jogar no iPhone, iPad ou qualquer navegador
+
+**▶ https://kaiojovane-dev.github.io/jogo-prototipo/**
+
+1. Abra o link no **Safari** (iPhone/iPad) ou em qualquer navegador e espere carregar (cerca de 24 MB na primeira vez;
+   depois fica guardado no aparelho).
+2. Deite o celular: o jogo é em paisagem.
+3. Para jogar em tela cheia, como um app: no Safari, toque em **Compartilhar → Adicionar à Tela de Início** e abra
+   pelo ícone do Fim do Mapa.
+
+O progresso fica salvo no próprio navegador. Em iPhones mais antigos a versão web pode ficar um pouco mais lenta
+que o app de Android.
+
+## Baixar e instalar no Android
 
 1. No celular, abra a página **Releases** deste repositório e baixe o arquivo `FimDoMapa.apk` da versão mais nova.
 2. Toque no arquivo baixado. Se o Android pedir, permita **instalar apps desta fonte** (o navegador ou o gerenciador
@@ -56,6 +69,8 @@ Abra o **Unity Hub** (ele precisa estar aberto para a licença) e rode na raiz d
 
 O APK sai em `Builds/FimDoMapa.apk`. Para a versão de teste no Windows, troque por
 `-buildTarget StandaloneWindows64 -executeMethod BuildTool.BuildWindows` (sai em `Builds/Windows/`).
+Para a versão web, `-buildTarget WebGL -executeMethod BuildTool.BuildWebGL` (sai em `Builds/Web/`, com a página
+de `Assets/WebGLTemplates/FimDoMapa/`); para publicar, o conteúdo de `Builds/Web/` vai para o branch `gh-pages`.
 O build empacota o Lua sozinho. O Android usa as ferramentas em `%USERPROFILE%\AndroidRE` (JDK 17, SDK e NDK)
 ou na pasta indicada pela variável de ambiente `MARE_ANDROID_TOOLS`.
 
@@ -77,5 +92,6 @@ filma o Pipo em câmera lenta. `-notch <px>` simula um entalhe de câmera.
 © 2026 SnyX Studio. **Todos os direitos reservados** — o código e a arte deste repositório não têm licença aberta.
 
 - Personagens, nomes e mundo são originais. Ilustrações geradas com IA (Google Gemini) e recortadas para o jogo.
-- [xLua](https://github.com/Tencent/xLua) (Tencent), licença MIT.
+- [xLua](https://github.com/Tencent/xLua) (Tencent), licença MIT — na versão web, o código C do xLua e do
+  [Lua 5.4](https://www.lua.org) (PUC-Rio, licença MIT) fica em `Assets/Plugins/WebGL/xlua/`.
 - Fonte **Lilita One** (Juan Montoreano), SIL Open Font License 1.1 — texto em `Assets/Resources/Fonts/OFL-LilitaOne.txt`.

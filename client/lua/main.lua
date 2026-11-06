@@ -226,8 +226,19 @@ function G.ir(nome, arg)
   K.Clear(camadas.fundo); K.Clear(camadas.tela)
   for i = #modais, 1, -1 do modais[i].fechar() end
   atual = (nome == 'batalha') and Batalha or Telas[nome]
-  G.telaAtual = nome
+  G.telaAtual, G.argAtual = nome, arg
   atual.abrir(arg)
+end
+
+-- a janela mudou de tamanho (navegador redimensionado, celular girado na versão web): remonta a tela atual.
+-- Na batalha só o cenário é refeito (a luta continua); nas outras telas, a tela inteira.
+function Game_Resize()
+  if not atual or not G.telaAtual then return end
+  if G.telaAtual == 'batalha' then
+    if Batalha.redimensionar then Batalha.redimensionar() end
+  else
+    G.ir(G.telaAtual, G.argAtual)
+  end
 end
 
 function G.config()

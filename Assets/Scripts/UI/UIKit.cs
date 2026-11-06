@@ -834,9 +834,18 @@ public static class UIKit
             }
         }
 
+        int telaW, telaH; float redimT = -1;
+
         void Update()
         {
             AplicarAreaSegura();
+            // janela mudou de tamanho (navegador, celular girado na versão web): avisa o Lua depois que estabiliza
+            if (Screen.width != telaW || Screen.height != telaH)
+            {
+                if (telaW > 0) redimT = 0.35f;
+                telaW = Screen.width; telaH = Screen.height;
+            }
+            if (redimT > 0 && (redimT -= Time.unscaledDeltaTime) <= 0) LuaManager.Call("Game_Resize");
             if (add.Count > 0) { list.AddRange(add); add.Clear(); }
             float dt = Dt();
             if (dt <= 0) return;  // pausa de impacto

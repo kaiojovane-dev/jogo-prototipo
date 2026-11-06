@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>{{{ PRODUCT_NAME }}}</title>
+    <meta name="description" content="Fim do Mapa — RPG de aventura pirata. Versão beta para testes.">
+    <meta name="theme-color" content="#071327">
+    <!-- iPhone: "Adicionar à Tela de Início" abre o jogo em tela cheia, como um app -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Fim do Mapa">
+    <link rel="apple-touch-icon" href="TemplateData/icone-180.png">
+    <link rel="icon" type="image/png" href="TemplateData/icone-180.png">
+    <link rel="manifest" href="manifest.webmanifest">
+    <link rel="stylesheet" href="TemplateData/style.css">
+  </head>
+  <body>
+    <div id="jogo">
+      <canvas id="unity-canvas" tabindex="-1"></canvas>
+      <div id="carregando">
+        <img id="logo" src="TemplateData/logo.png" alt="Fim do Mapa">
+        <div id="barra"><div id="barra-cheia"></div></div>
+        <p id="texto">Içando as velas... <span id="pct">0%</span></p>
+      </div>
+      <div id="erro"></div>
+    </div>
+    <!-- o jogo é em paisagem: no celular em pé, pede para girar -->
+    <div id="girar">
+      <div class="celular"></div>
+      <p>Gire o celular para jogar</p>
+    </div>
+    <script>
+      var canvas = document.querySelector("#unity-canvas");
+      var carregando = document.querySelector("#carregando");
+      var barra = document.querySelector("#barra-cheia");
+      var pct = document.querySelector("#pct");
+      var erro = document.querySelector("#erro");
+
+      function mostrarErro(msg) {
+        erro.innerHTML = "<b>Não foi possível abrir o jogo.</b><br>" + msg +
+          "<br><br>Tente recarregar a página. No iPhone, use o Safari atualizado.";
+        erro.style.display = "block";
+      }
+
+      var buildUrl = "Build";
+      var config = {
+        arguments: [],
+        dataUrl: buildUrl + "/{{{ DATA_FILENAME }}}",
+        frameworkUrl: buildUrl + "/{{{ FRAMEWORK_FILENAME }}}",
+#if USE_WASM
+        codeUrl: buildUrl + "/{{{ CODE_FILENAME }}}",
+#endif
+#if SYMBOLS_FILENAME
+        symbolsUrl: buildUrl + "/{{{ SYMBOLS_FILENAME }}}",
+#endif
+        streamingAssetsUrl: "StreamingAssets",
+        companyName: {{{ JSON.stringify(COMPANY_NAME) }}},
+        productName: {{{ JSON.stringify(PRODUCT_NAME) }}},
+        productVersion: {{{ JSON.stringify(PRODUCT_VERSION) }}},
+        // telas de 3x (iPhone) desenham em até 2x: imagem nítida sem pesar no celular
+        devicePixelRatio: Math.min(window.devicePixelRatio || 1, 2),
+        // o progresso (PlayerPrefs) é gravado no navegador automaticamente a cada alteração
+        autoSyncPersistentDataPath: true,
+        showBanner: function (msg, tipo) { if (tipo === "error") mostrarErro(msg); else console.warn(msg); },
+      };
+
+      var script = document.createElement("script");
+      script.src = buildUrl + "/{{{ LOADER_FILENAME }}}";
+      script.onload = function () {
+        createUnityInstance(canvas, config, function (p) {
+          barra.style.width = (100 * p) + "%";
+          pct.textContent = Math.round(100 * p) + "%";
+        }).then(function () {
+          carregando.style.display = "none";
+        }).catch(function (msg) {
+          carregando.style.display = "none";
+          mostrarErro(msg);
+        });
+      };
+      script.onerror = function () { mostrarErro("Falha ao baixar os arquivos do jogo. Verifique a internet."); };
+      document.body.appendChild(script);
+    </script>
+  </body>
+</html>

@@ -111,6 +111,20 @@ public static class BuildTool
             imp.SetPlatformData(BuildTarget.Android, "CPU", kv.Value);
             imp.SaveAndReimport();
         }
+        // xLua para a web: código C do Lua 5.4.1 + xLua compilado junto com o jogo (o navegador não carrega .so/.dll).
+        // Só pode valer para WebGL: no Android ele duplicaria a libxlua.so.
+        foreach (var guid in AssetDatabase.FindAssets("", new[] { "Assets/Plugins/WebGL" }))
+        {
+            string p = AssetDatabase.GUIDToAssetPath(guid);
+            if (!(AssetImporter.GetAtPath(p) is PluginImporter c)) continue;
+            if (c.GetCompatibleWithPlatform(BuildTarget.WebGL) && !c.GetCompatibleWithAnyPlatform() && !c.GetCompatibleWithEditor()) continue;
+            c.SetCompatibleWithAnyPlatform(false);
+            c.SetCompatibleWithEditor(false);
+            foreach (BuildTarget t in new[] { BuildTarget.Android, BuildTarget.StandaloneWindows64, BuildTarget.iOS })
+                c.SetCompatibleWithPlatform(t, false);
+            c.SetCompatibleWithPlatform(BuildTarget.WebGL, true);
+            c.SaveAndReimport();
+        }
         // xLua para Windows (editor e build de teste)
         const string win = "Assets/Plugins/x86_64/xlua.dll";
         if (File.Exists(Path.Combine(Application.dataPath, "..", win)))
@@ -169,6 +183,51 @@ public static class BuildTool
             });
             Debug.Log("[Build] Windows: " + report.summary.result + " | erros: " + report.summary.totalErrors);
             if (report.summary.result != BuildResult.Succeeded) code = 1;
+        }
+        catch (Exception e)
+        {
+            Debug.LogError("[Build] falhou: " + e);
+            code = 1;
+        }
+        if (Application.isBatchMode) EditorApplication.Exit(code);
+    }
+
+    // Versão web (iPhone, iPad e qualquer navegador): sai em Builds/Web, pronta para o GitHub Pages.
+    // Texturas em ASTC (aceitas pelos iPhones e Androids atuais) e arquivos em gzip com descompressão no navegador,
+    // porque o GitHub Pages não envia o cabeçalho Content-Encoding dos arquivos já comprimidos.
+    [MenuItem("Mare/Gerar Web (iPhone)")]
+    public static void BuildWebGL()
+    {
+        int code = 0;
+        try
+        {
+            PackLua();
+            ConfigurePlayer();
+            EnsurePlugins();
+            EnsureScene();
+            var web = NamedBuildTarget.WebGL;
+            PlayerSettings.SetManagedStrippingLevel(web, ManagedStrippingLevel.Minimal);
+            PlayerSettings.WebGL.template = "PROJECT:FimDoMapa";
+            PlayerSettings.WebGL.compressionFormat = WebGLCompressionFormat.Gzip;
+            PlayerSettings.WebGL.decompressionFallback = true;
+            PlayerSettings.WebGL.dataCaching = true;
+            PlayerSettings.WebGL.exceptionSupport = WebGLExceptionSupport.ExplicitlyThrownExceptionsOnly;
+            PlayerSettings.WebGL.nameFilesAsHashes = false;
+            PlayerSettings.runInBackground = false;
+            EditorUserBuildSettings.webGLBuildSubtarget = WebGLTextureSubtarget.ASTC;
+            AssetDatabase.SaveAssets();
+            string outDir = Path.Combine(RepoRoot, "Builds", "Web");
+            var report = BuildPipeline.BuildPlayer(new BuildPlayerOptions
+            {
+                scenes = new[] { SCENE },
+                locationPathName = outDir,
+                target = BuildTarget.WebGL,
+                targetGroup = BuildTargetGroup.WebGL,
+                options = BuildOptions.None,
+            });
+            var s = report.summary;
+            Debug.Log("[Build] Web: " + s.result + " | erros: " + s.totalErrors + " | tamanho: " + (s.totalSize / 1048576f).ToString("0.0") + " MB");
+            if (s.result != BuildResult.Succeeded) code = 1;
         }
         catch (Exception e)
         {

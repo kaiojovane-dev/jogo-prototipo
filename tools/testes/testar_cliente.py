@@ -159,6 +159,9 @@ def principal():
                 break
             mock.clicarUltimo('modal')
         print('  tela após a introdução:', lua.eval('G.telaAtual'))
+        # tela redimensionada (versão web: celular girado) remonta a tela sem erro
+        G.Game_Resize(); mock.quadros(10)
+        total += relatar(mock, 'redimensionar')
         mock.quadros(40)
         total += relatar(mock, 'introdução/navio')
 
@@ -195,6 +198,7 @@ def principal():
 
         # pausa e desistência
         lua.execute("G.ir('batalha', 0)"); mock.quadros(90)
+        G.Game_Resize(); mock.quadros(5)   # redimensionar no meio da luta só refaz o cenário
         lua.execute('Game_Back()'); mock.quadros(5)
         mock.clicar('Continuar'); mock.quadros(30)
         lua.execute('Game_Back()'); mock.quadros(5)

@@ -698,7 +698,7 @@ function B.abrir(faseN)
   st.fase = st.batalha.fase
   local W = K.W()
   local tema = D.Ilhas._ordem[st.fase.ilhaIdx + 1]
-  st.cen = Cenario.montar(C.fundo, tema, { horizonte = 690, chaoAlt = 470, yMinBrilho = -80 })
+  st.cen = Cenario.montar(C.fundo, tema, { horizonte = 690, yMinBrilho = -80 })
   Cenario.entrada(st.cen, 1.2)
   K.Ambiente('mar')
   st.palco = U.box(C.tela, 0, 0, W, 1080)
@@ -931,6 +931,13 @@ function B.resultado(fim)
 end
 
 function B.terminou() return st.mostrou == true end
+
+-- tela mudou de tamanho no meio da luta: refaz o cenário para cobrir a tela nova (unidades e HUD se ajustam sozinhos)
+function B.redimensionar()
+  if not st.batalha or not st.fase then return end
+  K.Clear(C.fundo)
+  st.cen = Cenario.montar(C.fundo, D.Ilhas._ordem[st.fase.ilhaIdx + 1], { horizonte = 690, yMinBrilho = -80 })
+end
 -- o chefe está carregando a Maré Negra agora (usado pelo modo de teste automático)
 function B.emCarga() return st.carga ~= nil end
 function B.batalha() return st.batalha end
