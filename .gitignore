@@ -1,0 +1,74 @@
+# ============================================================
+# Fim do Mapa — o que NÃO vai para o GitHub
+# ============================================================
+
+# === Unity: gerado pelo editor (recriado ao abrir o projeto) ===
+[Ll]ibrary/
+[Tt]emp/
+[Oo]bj/
+[Bb]uild/
+[Bb]uilds/
+[Ll]ogs/
+[Uu]ser[Ss]ettings/
+[Mm]emory[Cc]aptures/
+[Rr]ecordings/
+*.csproj
+*.unityproj
+*.sln
+*.slnx
+*.suo
+*.tmp
+*.user
+*.userprefs
+*.pidb
+*.booproj
+*.svd
+*.pdb
+*.mdb
+*.opendb
+*.VC.db
+*.apk
+*.aab
+crashlytics-buildid.txt
+sysinfo.txt
+.utmp/
+
+# === IDE e sistema ===
+.vs/
+.vscode/
+.idea/
+*.swp
+*~
+.DS_Store
+Thumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# === Ferramentas: cache e logs ===
+__pycache__/
+*.pyc
+*.log
+node_modules/
+
+# === Segredos (nunca publicar: chaves de assinatura, senhas, tokens) ===
+.env
+.env.*
+*.pem
+*.key
+*.keystore
+*.jks
+credentials.json
+secrets.json
+
+# === Estúdio Claude (fica só neste PC; o repositório guarda apenas o jogo) ===
+.claude/
+CLAUDE.md
+CLAUDE.local.md
+project.yaml
+project.local.yaml
+.worktreeinclude
+design/
+docs/
+production/
+studio-tests/
+.scratch/

@@ -1,0 +1,24 @@
+<linker>
+  <!-- O Lua acessa estas classes por reflexão (xLua); não podem ser removidas pelo IL2CPP. -->
+  <assembly fullname="Assembly-CSharp">
+    <type fullname="UIKit" preserve="all"/>
+    <type fullname="GameEntry" preserve="all"/>
+    <type fullname="LuaManager" preserve="all"/>
+    <type fullname="Sfx" preserve="all"/>
+    <type fullname="Skins" preserve="all"/>
+    <!-- esqueleto 2D: o rig é lido por JsonUtility (campos das classes aninhadas) -->
+    <type fullname="Boneco2D" preserve="all"/>
+    <type fullname="Boneco2D/RigDef" preserve="all"/>
+    <type fullname="Boneco2D/OssoDef" preserve="all"/>
+    <type fullname="Boneco2D/RegiaoDef" preserve="all"/>
+    <type fullname="Boneco2D/ParteDef" preserve="all"/>
+    <type fullname="Boneco2D/PoseDef" preserve="all"/>
+    <type fullname="Boneco2D/ChaveDef" preserve="all"/>
+    <type fullname="Boneco2D/AnimDef" preserve="all"/>
+    <type fullname="Tentaculo" preserve="all"/>
+    <type fullname="Fita" preserve="all"/>
+  </assembly>
+  <assembly fullname="UnityEngine.CoreModule">
+    <type fullname="UnityEngine.GameObject" preserve="all"/>
+  </assembly>
+</linker>

@@ -1,0 +1,84 @@
+{
+  "textura": "boneco_pipo",
+  "largura": 767, "altura": 1094, "atlasW": 1144, "atlasH": 1094,
+  "chao": 1072, "gravidade": 2000, "raizK": 380, "raizZeta": 0.42,
+  "ossos": [
+    { "nome": "raiz",       "pai": "",       "x": 470, "y": 600, "px": 470, "py": 560, "semPeso": true, "k": 300, "zeta": 0.5 },
+    { "nome": "quadril",    "pai": "raiz",   "x": 470, "y": 600, "px": 470, "py": 680, "raio": 70, "k": 420, "zeta": 0.6 },
+    { "nome": "tronco",     "pai": "raiz",   "x": 470, "y": 600, "px": 470, "py": 455, "raio": 85, "k": 360, "zeta": 0.55, "iner": 0.006 },
+    { "nome": "peito",      "pai": "tronco", "x": 470, "y": 455, "px": 468, "py": 295, "raio": 95, "k": 340, "zeta": 0.5, "iner": 0.008 },
+    { "nome": "cabeca",     "pai": "peito",  "x": 462, "y": 288, "px": 458, "py": 95,  "raio": 100, "k": 260, "zeta": 0.42, "iner": 0.012, "lim": 25 },
+    { "nome": "cabeloN",    "pai": "cabeca", "x": 378, "y": 110, "px": 338, "py": 205, "raio": 30, "k": 110, "zeta": 0.22, "iner": 0.02, "lim": 18 },
+    { "nome": "cabeloE",    "pai": "cabeca", "x": 402, "y": 78,  "px": 338, "py": 50,  "raio": 26, "k": 110, "zeta": 0.22, "iner": 0.02, "lim": 18 },
+    { "nome": "cabeloT",    "pai": "cabeca", "x": 428, "y": 62,  "px": 382, "py": 25,  "raio": 24, "k": 120, "zeta": 0.22, "iner": 0.02, "lim": 18 },
+    { "nome": "cabeloD",    "pai": "cabeca", "x": 505, "y": 82,  "px": 550, "py": 52,  "raio": 26, "k": 110, "zeta": 0.22, "iner": 0.02, "lim": 18 },
+    { "nome": "cabeloD2",   "pai": "cabeca", "x": 512, "y": 122, "px": 552, "py": 135, "raio": 22, "k": 120, "zeta": 0.22, "iner": 0.02, "lim": 18 },
+    { "nome": "lenco",      "pai": "peito",  "x": 410, "y": 328, "px": 405, "py": 402, "k": 55,  "zeta": 0.18, "iner": 0.03, "grav": 0.5, "lim": 30 },
+    { "nome": "bracoB",     "pai": "peito",  "x": 585, "y": 322, "px": 645, "py": 420, "raio": 42, "k": 380, "zeta": 0.5, "iner": 0.006, "lim": 25 },
+    { "nome": "anteB",      "pai": "bracoB", "x": 645, "y": 420, "px": 455, "py": 515, "k": 420, "zeta": 0.5, "iner": 0.006, "lim": 22 },
+    { "nome": "bracoA",     "pai": "peito",  "x": 368, "y": 322, "px": 338, "py": 420, "semPeso": true, "k": 420, "zeta": 0.5, "iner": 0.004, "lim": 35 },
+    { "nome": "anteA",      "pai": "bracoA", "x": 338, "y": 420, "px": 255, "py": 505, "k": 900, "zeta": 0.55, "iner": 0.002 },
+    { "nome": "frigideira", "pai": "anteA",  "x": 252, "y": 508, "px": 115, "py": 390, "k": 240, "zeta": 0.32, "iner": 0.02, "lim": 70 },
+    { "nome": "pernaA",     "pai": "quadril","x": 395, "y": 640, "px": 262, "py": 752, "raio": 70, "k": 520, "zeta": 0.65, "iner": 0.002, "lim": 40 },
+    { "nome": "canelaA",    "pai": "pernaA", "x": 262, "y": 752, "px": 300, "py": 905, "raio": 60, "k": 520, "zeta": 0.65, "iner": 0.002, "lim": 40 },
+    { "nome": "peA",        "pai": "canelaA","x": 300, "y": 905, "px": 195, "py": 1005,"raio": 70, "k": 520, "zeta": 0.7, "lim": 30 },
+    { "nome": "pernaB",     "pai": "quadril","x": 565, "y": 650, "px": 605, "py": 800, "raio": 70, "k": 520, "zeta": 0.65, "iner": 0.002, "lim": 40 },
+    { "nome": "canelaB",    "pai": "pernaB", "x": 605, "y": 800, "px": 665, "py": 945, "raio": 60, "k": 520, "zeta": 0.65, "iner": 0.002, "lim": 40 },
+    { "nome": "peB",        "pai": "canelaB","x": 665, "y": 945, "px": 755, "py": 1065,"raio": 70, "k": 520, "zeta": 0.7, "lim": 30 }
+  ],
+  "partes": [
+    {
+      "nome": "corpo", "ox": 0, "oy": 0, "w": 767, "h": 1094, "ax": 0, "ay": 0, "gx": 26, "gy": 38,
+      "ossos": ["quadril", "tronco", "peito", "cabeca", "cabeloN", "cabeloE", "cabeloT", "cabeloD", "cabeloD2", "lenco",
+                "bracoB", "anteB", "pernaA", "canelaA", "peA", "pernaB", "canelaB", "peB"],
+      "regioes": [
+        { "osso": "lenco", "suave": 6, "pol": [362,330, 440,318, 458,330, 446,410, 410,404, 370,400, 358,368] },
+        { "osso": "anteB", "suave": 12, "pol": [418,470, 470,462, 540,440, 608,408, 668,398, 702,440, 692,505, 640,548, 560,566, 470,562, 416,552] }
+      ]
+    },
+    {
+      "nome": "braco", "ox": 8, "oy": 283, "w": 373, "h": 290, "ax": 771, "ay": 0, "gx": 20, "gy": 16,
+      "ossos": ["anteA", "frigideira"],
+      "regioes": [
+        { "osso": "frigideira", "suave": 6, "pol": [0,265, 252,265, 268,350, 252,448, 228,466, 206,486, 192,512, 130,522, 0,522] },
+        { "osso": "frigideira", "suave": 5, "pol": [270,546, 292,533, 318,552, 304,570, 270,576] }
+      ]
+    }
+  ],
+  "poses": [
+    { "nome": "guarda",    "v": "" },
+    { "nome": "respira",   "v": "peito 1.4 tronco 0.4 cabeca -1.6 bracoA 2 anteA 3 frigideira -3 bracoB 1.5 anteB -2 raiz.sy 1.012 raiz.sx 0.994" },
+    { "nome": "corre1",    "v": "raiz -3 tronco -7 peito -5 cabeca 7 pernaA -12 canelaA -22 pernaB 12 canelaB 4 bracoA 8 anteA 14 frigideira 10 bracoB -6 anteB 6 raiz.y -6" },
+    { "nome": "corre2",    "v": "raiz -3 tronco -7 peito -5 cabeca 7 pernaA 10 canelaA -4 pernaB -8 canelaB -28 bracoA -6 anteA -10 frigideira -6 bracoB 6 anteB -6 raiz.y 34 raiz.sy 1.03 raiz.sx 0.98" },
+    { "nome": "investida", "v": "raiz -4 tronco -8 peito -4 cabeca 6 pernaA -16 canelaA -20 pernaB 16 canelaB 6 bracoA 6 anteA -40 frigideira 18 anteB 6 raiz.sx 0.97 raiz.sy 1.04" },
+    { "nome": "ergue",     "v": "raiz -2 tronco -2 peito 6 cabeca 4 pernaA -12 canelaA -16 pernaB 12 bracoA 14 anteA -118 frigideira 32 anteB 8 bracoB -6 raiz.sy 1.06 raiz.sx 0.96 raiz.y 24" },
+    { "nome": "pancada",   "v": "raiz -6 tronco -12 peito -16 cabeca -6 pernaA -20 canelaA -10 pernaB 22 canelaB 12 bracoA -10 anteA -252 frigideira -45 anteB -6 bracoB 6 raiz.sy 0.9 raiz.sx 1.08 raiz.y -14" },
+    { "nome": "segue",     "v": "raiz -4 tronco -8 peito -10 cabeca -2 pernaA -14 pernaB 14 bracoA -4 anteA -305 frigideira -18 raiz.sy 0.96 raiz.sx 1.03" },
+    { "nome": "dano",      "v": "raiz 5 tronco 8 peito 12 cabeca 16 bracoA 14 anteA 30 frigideira 25 bracoB 10 anteB 12 pernaA 6 pernaB -8 raiz.sx 1.05 raiz.sy 0.94 raiz.x -30" },
+    { "nome": "carga",     "v": "raiz 2 tronco 4 peito 6 cabeca 3 bracoB -18 anteB 14 bracoA 10 anteA 20 frigideira 15 pernaA -6 canelaA -12 pernaB 6 canelaB -8 raiz.sy 0.92 raiz.sx 1.05 raiz.y -16" },
+    { "nome": "solta",     "v": "raiz -2 tronco -5 peito -7 cabeca -3 bracoB 16 anteB -14 bracoA -8 anteA -20 frigideira -15 pernaA -9 canelaA -8 pernaB 9 canelaB 4 raiz.sy 1.04 raiz.sx 0.97" },
+    { "nome": "puxa",      "v": "raiz 3 tronco 5 peito 7 cabeca 5 bracoB -12 anteB 12 bracoA 6 anteA 10 pernaA -6 pernaB 4 raiz.sy 0.97" },
+    { "nome": "morto",     "v": "tronco -25 peito -20 cabeca -35 bracoA 30 anteA 40 frigideira 30 bracoB 20 anteB 20 pernaA 20 canelaA -30 pernaB -15 canelaB -20" },
+    { "nome": "vitoria",   "v": "raiz 2 tronco 4 peito 8 cabeca 10 bracoA 24 anteA -150 frigideira 40 bracoB 8 anteB 10 raiz.sy 1.05 raiz.sx 0.97 raiz.y 20" }
+  ],
+  "anims": [
+    { "nome": "parado", "loop": true, "fim": "", "q": [
+      { "t": 0, "p": "guarda", "e": 0 }, { "t": 0.95, "p": "respira", "e": 0 }, { "t": 1.9, "p": "guarda", "e": 0 } ] },
+    { "nome": "correr", "loop": true, "fim": "", "q": [
+      { "t": 0, "p": "corre1", "e": 0 }, { "t": 0.13, "p": "corre2", "e": 0 }, { "t": 0.26, "p": "corre1", "e": 0 } ] },
+    { "nome": "golpe", "loop": false, "fim": "parado", "q": [
+      { "t": 0, "p": "investida", "e": 0 }, { "t": 0.07, "p": "ergue", "e": 3 }, { "t": 0.13, "p": "pancada", "e": 2 },
+      { "t": 0.26, "p": "segue", "e": 3 }, { "t": 0.5, "p": "guarda+anteA -360", "e": 0 } ] },
+    { "nome": "dano", "loop": false, "fim": "parado", "q": [
+      { "t": 0, "p": "dano", "e": 0 }, { "t": 0.12, "p": "dano", "e": 0 }, { "t": 0.45, "p": "guarda", "e": 0 } ] },
+    { "nome": "especial", "loop": false, "fim": "parado", "q": [
+      { "t": 0, "p": "carga", "e": 0 }, { "t": 0.12, "p": "solta", "e": 2 }, { "t": 0.55, "p": "solta", "e": 0 },
+      { "t": 0.72, "p": "puxa", "e": 0 }, { "t": 0.84, "p": "solta", "e": 2 }, { "t": 1.0, "p": "solta", "e": 0 },
+      { "t": 1.35, "p": "guarda", "e": 0 } ] },
+    { "nome": "morto", "loop": false, "fim": "", "q": [
+      { "t": 0, "p": "morto", "e": 0 }, { "t": 5, "p": "morto", "e": 0 } ] },
+    { "nome": "vitoria", "loop": false, "fim": "parado", "q": [
+      { "t": 0, "p": "guarda", "e": 0 }, { "t": 0.18, "p": "vitoria", "e": 3 }, { "t": 1.0, "p": "vitoria", "e": 0 },
+      { "t": 1.4, "p": "guarda", "e": 0 } ] }
+  ]
+}

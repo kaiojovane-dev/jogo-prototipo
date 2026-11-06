@@ -1,0 +1,11 @@
+-- Gerado por tools/excel2lua.py a partir de Herois.xlsx (aba Herois). Não edite à mão.
+local t = {
+  ["lina"] = {id = "lina", nome = "Lina Faísca", titulo = "Pistoleira do Peixe-leão", raridade = "SR", elemento = "fogo", classe = "Atiradora", linha = "tras", hp = 880, atk = 142, def = 38, vel = 1.2, crit = 0.2, crit_dmg = 1.7, ataque_alvo = "frente", ataque_mult = 1, ult = "u_lina", fala = "Duas pistolas, zero paciência!", arte = "lina"},
+  ["mirto"] = {id = "mirto", nome = "Dr. Mirto Salgado", titulo = "Médico da Tartaruga", raridade = "SR", elemento = "luz", classe = "Curandeiro", linha = "tras", hp = 920, atk = 105, def = 46, vel = 0.9, crit = 0.05, crit_dmg = 1.5, ataque_alvo = "frente", ataque_mult = 0.9, ult = "u_mirto", fala = "Respire fundo. A tartaruga cuida de nós.", arte = "mirto"},
+  ["bento"] = {id = "bento", nome = "Bento Canhão", titulo = "Canhoneiro do Tubarão", raridade = "R", elemento = "fogo", classe = "Canhoneiro", linha = "tras", hp = 860, atk = 128, def = 36, vel = 0.8, crit = 0.1, crit_dmg = 1.5, ataque_alvo = "frente", ataque_mult = 1, ult = "u_bento", fala = "O tubarão já sentiu o cheiro. Fogo!", arte = "bento"},
+  ["marina"] = {id = "marina", nome = "Marina Coral", titulo = "Navegadora da Moreia", raridade = "R", elemento = "mare", classe = "Navegadora", linha = "tras", hp = 840, atk = 112, def = 40, vel = 1.05, crit = 0.12, crit_dmg = 1.6, ataque_alvo = "frente", ataque_mult = 1, ult = "u_marina", fala = "Rota traçada. A moreia mostra o caminho.", arte = "marina"},
+  ["pipo"] = {id = "pipo", nome = "Pipo", titulo = "Grumete do Polvo", raridade = "R", elemento = "luz", classe = "Lutador", linha = "frente", hp = 1150, atk = 92, def = 70, vel = 1, crit = 0.08, crit_dmg = 1.5, ataque_alvo = "frente", ataque_mult = 1, ult = "u_pipo", fala = "O polvo não solta! Nem eu!", arte = "pipo"},
+  ["kalu"] = {id = "kalu", nome = "Kalu", titulo = "Arpoador da Raia", raridade = "SSR", elemento = "mare", classe = "Guardião", linha = "frente", hp = 1500, atk = 118, def = 84, vel = 0.95, crit = 0.1, crit_dmg = 1.6, ataque_alvo = "frente", ataque_mult = 1, ult = "u_kalu", fala = "Ninguém fica para trás enquanto a raia brilhar.", arte = "kalu"},
+}
+t._ordem = {"lina", "mirto", "bento", "marina", "pipo", "kalu"}
+return t
